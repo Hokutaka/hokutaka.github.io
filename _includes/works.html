@@ -1,0 +1,132 @@
+      <section class="works" id="works" aria-labelledby="works-title">
+        <div class="works__inner">
+          <header class="works__header">
+            <p class="section-label">02 / Selected Work</p>
+
+            <h2 class="works__title" id="works-title">
+              Works
+            </h2>
+
+            <p class="works__lead">
+              公開中の制作・実験記録。<br>
+              完成品だけでなく、考えたことや試したことも残します。
+            </p>
+          </header>
+
+          <article class="whitebase-project">
+            <p class="whitebase-project__number" aria-hidden="true">
+              001
+            </p>
+
+            <div class="whitebase-project__intro">
+              <p class="whitebase-project__eyebrow">
+                Public experiment / Compute lab
+              </p>
+
+              <h3>Whitebase</h3>
+
+              <p class="whitebase-project__statement">
+                仕組みを小さい単位で実装し、
+                観察・記録・比較・可視化するための、
+                学習・実験用リポジトリ。
+              </p>
+
+              <div class="whitebase-project__links">
+                <a
+                  href="https://github.com/Hokutaka/Whitebase"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Repository
+                  <span aria-hidden="true">↗</span>
+                </a>
+
+                <a
+                  href="https://hokutaka.github.io/Whitebase/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Browser UI
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <figure class="whitebase-project__visual">
+              <div class="whitebase-project__image-frame">
+                <img
+                  src="./assets/images/whitebase-control-panel.png"
+                  alt="Whitebase Control Panelの画面。開発・検証用コマンドと実行ログを表示している。"
+                  draggable="false"
+                >
+              </div>
+
+              <figcaption>
+                Whitebase Control Panel —
+                validation and build operations
+              </figcaption>
+            </figure>
+
+            <div class="whitebase-project__details">
+              <dl class="whitebase-project__facts">
+                <div>
+                  <dt>Purpose</dt>
+                  <dd>
+                    計算処理と境界技術を、
+                    同じ条件で比較できる形に分解する。
+                  </dd>
+                </div>
+
+                <div>
+                  <dt>Backends</dt>
+                  <dd>
+                    Rust / C++ / Assembly<br>
+                    Scalar / SIMD・AVX
+                  </dd>
+                </div>
+
+                <div>
+                  <dt>Boundaries</dt>
+                  <dd>
+                    C ABI・FFI / Tauri IPC<br>
+                    HTTP + JSON / WebAssembly
+                  </dd>
+                </div>
+
+                <div>
+                  <dt>Interfaces</dt>
+                  <dd>
+                    Desktop UI / Browser UI<br>
+                    Development control tools
+                  </dd>
+                </div>
+              </dl>
+
+              <div
+                class="whitebase-project__flow"
+                aria-label="Whitebaseの構成概要"
+              >
+                <div class="whitebase-flow__rail">
+                  <span>INPUT</span>
+                  <i aria-hidden="true"></i>
+                  <span>RUNNER</span>
+                  <i aria-hidden="true"></i>
+                  <span>CORE</span>
+                  <i aria-hidden="true"></i>
+                  <span>REPORT</span>
+                </div>
+
+                <div class="whitebase-flow__backends">
+                  <span>RUST</span>
+                  <span>C++</span>
+                  <span>ASSEMBLY</span>
+                </div>
+
+                <p>
+                  One core, multiple execution paths.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>

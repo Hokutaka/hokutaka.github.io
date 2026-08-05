@@ -1,0 +1,17 @@
+title: Hokutaka | Portfolio
+description: "Hokutaka/lililifire - プログラムとイラストが好きです。"
+url: "https://hokutaka.github.io"
+lang: ja
+
+permalink: /blog/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+exclude:
+  - build.py
+  - README.md

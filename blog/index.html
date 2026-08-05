@@ -1,0 +1,42 @@
+---
+layout: default
+title: Blog
+description: "制作ログや、考えたことのメモ。"
+permalink: /blog/
+---
+<section class="blog-index" aria-labelledby="blog-index-title">
+  <div class="blog-index__inner">
+    <header class="blog-index__header">
+      <p class="section-label">Blog</p>
+
+      <h1 class="blog-index__title" id="blog-index-title">Blog</h1>
+
+      <p class="blog-index__lead">
+        制作ログや、考えたことのメモ。<br>
+        気が向いたときに書いていきます。
+      </p>
+    </header>
+
+    {% if site.posts.size > 0 %}
+    <ul class="blog-list">
+      {% for post in site.posts %}
+      <li class="blog-list__item">
+        <a href="{{ post.url }}">
+          <span class="blog-list__date">
+            <time datetime="{{ post.date | date_to_xmlschema }}">
+              {{ post.date | date: "%Y.%m.%d" }}
+            </time>
+          </span>
+
+          <span class="blog-list__title">{{ post.title }}</span>
+
+          <span class="blog-list__arrow" aria-hidden="true">↗</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="blog-list__empty">まだ記事がありません。</p>
+    {% endif %}
+  </div>
+</section>
