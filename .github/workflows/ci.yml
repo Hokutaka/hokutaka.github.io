@@ -1,0 +1,53 @@
+name: Portfolio CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and validate site
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build standalone homepage
+        run: python build.py
+
+      - name: Validate generated homepage
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          html = Path("dist/index.html").read_text(encoding="utf-8")
+          assert html.lstrip().lower().startswith("<!doctype html>"), "Missing HTML doctype"
+          assert "{% include" not in html, "Unresolved include tag"
+
+          for section in ("about", "works", "contact"):
+              assert f'id="{section}"' in html, f"Missing section: {section}"
+
+          for asset in ("style.css", "assets/images/banner.png"):
+              assert Path(asset).is_file(), f"Missing referenced asset: {asset}"
+
+          print("Standalone homepage checks passed")
+          PY
+
+      - name: Build Jekyll site
+        uses: actions/jekyll-build-pages@v1
+
+      - name: Validate Jekyll output
+        run: |
+          test -s _site/index.html
+          test -s _site/blog/index.html
