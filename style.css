@@ -88,7 +88,6 @@ h1,
 h2,
 h3,
 .section-label,
-.hero__title,
 .hero__note-label,
 .hero__socials-label,
 .button,
@@ -208,13 +207,11 @@ h3,
 }
 
 .logo {
-  font-size: 1.15rem;
+  flex-shrink: 0;
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
   font-weight: 700;
-  letter-spacing: 0.12em;
-}
-
-.logo span {
-  color: var(--color-blue);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
 }
 
 .navigation {
@@ -440,19 +437,6 @@ h3,
 .hero__background,
 .hero__side {
   display: none;
-}
-
-.hero__title {
-  max-width: 100%;
-  margin: 0;
-  color: var(--color-heading);
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 5vw, 5.4rem);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.035em;
-  overflow-wrap: break-word;
-  animation: reveal-up 900ms 450ms both;
 }
 
 .hero__characters {
@@ -2098,7 +2082,11 @@ h3,
   }
 
   .navigation {
-    gap: 1rem;
+    gap: 0.65rem;
+  }
+
+  .navigation a {
+    font-size: 0.75rem;
   }
 
   .navigation a:nth-child(2),
