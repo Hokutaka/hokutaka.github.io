@@ -256,6 +256,11 @@ h3,
   transform-origin: left;
 }
 
+/* Mobile navigation stays out of the desktop layout. */
+.mobile-menu {
+  display: none;
+}
+
 /* ========================================
    Hero
 ======================================== */
@@ -2018,16 +2023,86 @@ h3,
   }
 
   .navigation {
-    gap: 0.65rem;
-  }
-
-  .navigation a {
-    font-size: 0.75rem;
-  }
-
-  .navigation a:nth-child(2),
-  .navigation a:nth-child(3) {
     display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+    margin-left: 0.75rem;
+  }
+
+  .mobile-menu__toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 44px;
+    padding: 0.5rem;
+    color: var(--color-ink);
+    font-size: 0.85rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .mobile-menu__toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-menu__toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .mobile-menu__icon,
+  .mobile-menu__icon::before,
+  .mobile-menu__icon::after {
+    display: block;
+    width: 1.25rem;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+  }
+
+  .mobile-menu__icon {
+    position: relative;
+  }
+
+  .mobile-menu__icon::before,
+  .mobile-menu__icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .mobile-menu__icon::before { top: -0.4rem; }
+  .mobile-menu__icon::after { top: 0.4rem; }
+
+  .mobile-menu__nav {
+    position: absolute;
+    top: calc(100% - 0.25rem);
+    right: var(--page-padding);
+    display: grid;
+    width: min(16rem, calc(100vw - 2 * var(--page-padding)));
+    padding: 0.5rem;
+    border: 1px solid var(--color-line);
+    border-radius: 0.75rem;
+    background: var(--color-paper);
+    box-shadow: 0 0.8rem 2rem rgb(38 56 70 / 12%);
+  }
+
+  .mobile-menu__nav a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.65rem 1rem;
+    border-radius: 0.4rem;
+    color: var(--color-ink);
+    font-size: 0.9rem;
+  }
+
+  .mobile-menu__nav a:hover,
+  .mobile-menu__nav a:focus-visible {
+    background: var(--color-blue-pale);
   }
 
   .hero {
@@ -2173,6 +2248,20 @@ h3,
   .hero__socials-list {
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --page-padding: 1rem;
+  }
+
+  .logo {
+    font-size: 0.85rem;
+  }
+
+  .mobile-menu {
+    margin-left: 0.25rem;
   }
 }
 
