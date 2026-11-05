@@ -1790,6 +1790,68 @@ h3,
   margin: 1.6em 0;
 }
 
+
+/* Shared Markdown content styles for Blog and Notes. */
+
+.post__body h1 {
+  margin: 1.8em 0 0.7em;
+
+  color: var(--color-heading);
+  font-size: 1.7rem;
+  line-height: 1.4;
+}
+
+.post__body h4 {
+  margin: 1.6em 0 0.6em;
+
+  color: var(--color-heading);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.post__body hr {
+  margin: 2rem 0;
+
+  border: 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.post__body table {
+  display: block;
+  overflow-x: auto;
+
+  max-width: 100%;
+  margin: 0 0 1.6em;
+
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.post__body th,
+.post__body td {
+  min-width: 7.5rem;
+  padding: 0.7rem 0.9rem;
+
+  border-bottom: 1px solid var(--color-line);
+
+  text-align: left;
+  vertical-align: top;
+}
+
+.post__body th {
+  background: var(--color-blue-pale);
+
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
+.post__body small {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  line-height: 1.75;
+}
+
 .post__back {
   margin-top: clamp(3rem, 6vh, 4rem);
   padding-top: 1.6rem;
