@@ -1,0 +1,39 @@
+---
+layout: default
+title: AI Notes
+description: "生成AI・映像制作・広告配信を理解するためのAI調査メモ集。"
+permalink: /ai-notes/
+---
+<section class="blog-index" aria-labelledby="ai-notes-title">
+  <div class="blog-index__inner">
+    <header class="blog-index__header">
+      <p class="section-label">Research / AI-assisted notes</p>
+      <h1 class="blog-index__title" id="ai-notes-title">AI Notes</h1>
+      <p class="blog-index__lead">
+        動画制作・生成AI・広告の仕組みを、仕事でも自分で判断できるように調べたメモ。<br>
+        個人ブログとは分けて、AIが整理した調査草稿として置いています。
+      </p>
+      <p class="blog-index__lead">
+        掲載内容は実務上の助言や購入・広告配信の推奨ではありません。
+        料金・仕様・規約は変わるため、各記事の日付と公式の一次情報を確認してください。
+      </p>
+    </header>
+
+    {% assign notes = site.ai_notes | sort: 'order' %}
+    {% if notes.size > 0 %}
+    <ul class="blog-list">
+      {% for note in notes %}
+      <li class="blog-list__item">
+        <a href="{{ note.url | relative_url }}">
+          <span class="blog-list__date">NOTE {{ note.order }}</span>
+          <span class="blog-list__title">{{ note.title | escape }}</span>
+          <span class="blog-list__arrow" aria-hidden="true">↗</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="blog-list__empty">メモはまだありません。</p>
+    {% endif %}
+  </div>
+</section>
