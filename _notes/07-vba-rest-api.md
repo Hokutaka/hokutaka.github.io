@@ -18,11 +18,11 @@ VBAからREST APIを呼び出す共通関数を作る。**baseUrl**（APIのベ�
 - **本文**：省略可。指定した文字列をUTF-8で送信
 - **戻り値**：HTTPステータス・レスポンス本文・レスポンスヘッダー・成功フラグ・通信エラー
 
-Windows版VBAを想定し、\`WinHttp.WinHttpRequest.5.1\`、\`ADODB.Stream\`、\`Scripting.Dictionary\` を遅延バインディングで利用する。標準モジュールへ貼り付ける想定で、参照設定の追加は不要。
+Windows版VBAを想定し、`WinHttp.WinHttpRequest.5.1`、`ADODB.Stream`、`Scripting.Dictionary` を遅延バインディングで利用する。標準モジュールへ貼り付ける想定で、参照設定の追加は不要。
 
 ## 実装コード
 
-\`\`\`vb
+```vb
 Option Explicit
 
 Public Type ApiResponse
@@ -225,19 +225,19 @@ Public Sub ExamplePostWithProxy()
     Debug.Print response.StatusCode, response.Succeeded
     Debug.Print response.Body, response.ErrorMessage
 End Sub
-\`\`\`
+```
 
 ## 呼び出し方
 
-\`ExampleGet\` は次のURLを組み立てる。
+`ExampleGet` は次のURLを組み立てる。
 
-\`\`\`text
+```text
 https://api.example.com/v1/items?keyword=%E6%97%A5%E6%9C%AC%E8%AA%9E&page=1
-\`\`\`
+```
 
-クエリパラメータが不要なら \`queryParams\` を省略して呼ぶ。
+クエリパラメータが不要なら `queryParams` を省略して呼ぶ。
 
-\`\`\`vb
+```vb
 Dim response As ApiResponse
 response = SendApiRequest("DELETE", "https://api.example.com/v1", "/items/123")
 
@@ -247,19 +247,19 @@ response = SendApiRequest( _
     endpoint:="/items/123", _
     requestBody:="{""name"":""更新後""}" _
 )
-\`\`\`
+```
 
-\`ExamplePostWithProxy\` は指定したプロキシを経由する。\`useProxy:=False\`（省略時も同じ）ならプロキシを使わず直接接続する。実際のプロキシアドレスは環境に合わせて変更すること。
+`ExamplePostWithProxy` は指定したプロキシを経由する。`useProxy:=False`（省略時も同じ）ならプロキシを使わず直接接続する。実際のプロキシアドレスは環境に合わせて変更すること。
 
 ## 実装の注意
 
-- \`Succeeded\` はHTTPステータス200～299で判定する。HTTP 4xx/5xxは通信成功でも \`Succeeded=False\` とし、\`StatusCode\` と \`Body\` に内容を残す。接続例外時には \`ErrorMessage\` を設定する。
-- \`Authorization\` は必要な場合にだけ呼び出し側から渡す。アクセストークンをGitHubにコミットしない。
-- \`queryParams\` には \`Scripting.Dictionary\` を渡す想定。同一キーの複数指定や配列値は未対応。
-- \`baseUrl\` に既存のクエリ・フラグメントを含むケース、\`endpoint\` のフラグメントは明示的に未対応とする。endpoint内の既存クエリ文字列には追加できる。
-- リクエスト本文がある場合は既定で \`application/json; charset=utf-8\` を設定。APIによって異なる場合は \`contentType\` を指定する。
-- \`ResponseText\` の文字コード解釈はサーバー応答に依存する。JSONの文字列化・解析、認証が必要なプロキシ、システムプロキシの自動検出、TLS証明書の個別設定は対象外。
-- \`SendApiRequest\` は同期実行。応答待ち中は呼び出し側の処理が止まる。タイムアウトは \`SetTimeouts\` の値で調整する。
+- `Succeeded` はHTTPステータス200～299で判定する。HTTP 4xx/5xxは通信成功でも `Succeeded=False` とし、`StatusCode` と `Body` に内容を残す。接続例外時には `ErrorMessage` を設定する。
+- `Authorization` は必要な場合にだけ呼び出し側から渡す。アクセストークンをGitHubにコミットしない。
+- `queryParams` には `Scripting.Dictionary` を渡す想定。同一キーの複数指定や配列値は未対応。
+- `baseUrl` に既存のクエリ・フラグメントを含むケース、`endpoint` のフラグメントは明示的に未対応とする。endpoint内の既存クエリ文字列には追加できる。
+- リクエスト本文がある場合は既定で `application/json; charset=utf-8` を設定。APIによって異なる場合は `contentType` を指定する。
+- `ResponseText` の文字コード解釈はサーバー応答に依存する。JSONの文字列化・解析、認証が必要なプロキシ、システムプロキシの自動検出、TLS証明書の個別設定は対象外。
+- `SendApiRequest` は同期実行。応答待ち中は呼び出し側の処理が止まる。タイムアウトは `SetTimeouts` の値で調整する。
 
 **動作確認状況**：実際のWindows/Excel VBAやAPIサーバーでの動作試験は行っていない。GET/POST/PUT/DELETE、プロキシあり/なし、空クエリ、日本語、HTTPエラー、タイムアウトを接続先環境で確認する必要がある。
 
