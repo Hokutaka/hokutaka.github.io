@@ -10,5 +10,27 @@
           <a href="/blog/">Blog</a>
           <a href="/#contact">Contact</a>
         </nav>
+
+        <details class="mobile-menu">
+          <summary class="mobile-menu__toggle">
+            <span class="mobile-menu__icon" aria-hidden="true"></span>
+            <span>Menu</span>
+          </summary>
+
+          <nav class="mobile-menu__nav" aria-label="モバイルナビゲーション">
+            <a href="/#about">About</a>
+            <a href="/#works">Works</a>
+            <a href="/blog/">Blog</a>
+            <a href="/#contact">Contact</a>
+          </nav>
+        </details>
       </div>
     </header>
+
+    <script>
+      document.querySelectorAll(".mobile-menu__nav a").forEach((link) => {
+        link.addEventListener("click", () => {
+          link.closest(".mobile-menu").open = false;
+        });
+      });
+    </script>
