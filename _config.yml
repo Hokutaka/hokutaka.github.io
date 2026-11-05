@@ -6,9 +6,9 @@ lang: ja
 permalink: /blog/:title/
 
 collections:
-  ai_notes:
+  notes:
     output: true
-    permalink: /ai-notes/:name/
+    permalink: /notes/:name/
 
 defaults:
   - scope:
@@ -20,7 +20,7 @@ defaults:
       path: ""
       type: "ai_notes"
     values:
-      layout: "ai-note"
+      layout: "note"
 
 exclude:
   - build.py

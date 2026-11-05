@@ -2,7 +2,9 @@
 title: "広告と動画制作を調べるための全体地図"
 description: "目的・企画・制作・配信・計測・改善のつながりを整理する。"
 order: 1
-reviewed_at: "2026-11-05"
+category: "広告・動画"
+updated_at: "2026-11-05"
+status: "調査中"
 ---
 ## これは何のためのメモか
 
@@ -28,11 +30,11 @@ BtoBでは、広告を見た人が必ずしも契約する人ではない。利�
 
 ## 知識の分解
 
-1. [広告を企画するときの考え方](/ai-notes/02-ad-planning/)：対象・媒体・訴求・指標。
-2. [動画制作に使う道具](/ai-notes/03-video-tools/)：録画・編集・素材・書き出し。
-3. [動画生成AIの比較方法](/ai-notes/04-generative-video-ai/)：無料／有料、商用利用、再生成コスト。
-4. [配信と効果測定](/ai-notes/05-measurement/)：URL、イベント、指標、実験。
-5. [公開前の確認事項](/ai-notes/06-safety-and-rights/)：権利、広告表現、データの扱い。
+1. [広告を企画するときの考え方](/notes/02-ad-planning/)：対象・媒体・訴求・指標。
+2. [動画制作に使う道具](/notes/03-video-tools/)：録画・編集・素材・書き出し。
+3. [動画生成AIの比較方法](/notes/04-generative-video-ai/)：無料／有料、商用利用、再生成コスト。
+4. [配信と効果測定](/notes/05-measurement/)：URL、イベント、指標、実験。
+5. [公開前の確認事項](/notes/06-safety-and-rights/)：権利、広告表現、データの扱い。
 
 ## 今後の調査で残す情報
 
@@ -46,3 +48,8 @@ BtoBでは、広告を見た人が必ずしも契約する人ではない。利�
 - [Google アナリティクス ヘルプ](https://support.google.com/analytics/)
 - [IAB Tech Lab](https://iabtechlab.com/)
 - [消費者庁：景品表示法](https://www.caa.go.jp/policies/policy/representation/fair_labeling/)
+
+
+## 更新履歴
+
+- 2026-11-05: 調査ノートの初稿を追加。記載内容は随時検証・更新予定。

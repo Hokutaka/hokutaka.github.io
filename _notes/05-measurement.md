@@ -2,7 +2,9 @@
 title: "広告配信と効果測定の基礎"
 description: "CPM・CTR・CVR・CPA、UTM、GA4、GTM、A/Bテストを整理する。"
 order: 5
-reviewed_at: "2026-11-05"
+category: "広告・動画"
+updated_at: "2026-11-05"
+status: "調査中"
 ---
 ## 「何が起きたか」を分けて考える
 
@@ -58,3 +60,8 @@ BtoBでは、問い合わせ数が少なく結論が出しにくい場合があ�
 - [Google Tag Manager ヘルプ](https://support.google.com/tagmanager/)
 - [Google 広告ヘルプ](https://support.google.com/google-ads/)
 - [Google のキャンペーン URL 作成ガイド](https://support.google.com/analytics/answer/10917952)
+
+
+## 更新履歴
+
+- 2026-11-05: 調査ノートの初稿を追加。記載内容は随時検証・更新予定。

@@ -2,7 +2,9 @@
 title: "動画生成AIを無料・有料・商用利用で比較する"
 description: "モデル・プラン・生成回数・素材の権利・採用素材1本あたりのコストを調べる。"
 order: 4
-reviewed_at: "2026-11-05"
+category: "広告・動画"
+updated_at: "2026-11-05"
+status: "調査中"
 ---
 ## 動画生成AIで何を比較するか
 
@@ -71,3 +73,8 @@ reviewed_at: "2026-11-05"
 - [Pika](https://pika.art/)
 - [Adobe Firefly](https://www.adobe.com/products/firefly.html)
 - [Google Flow](https://labs.google/flow/about)
+
+
+## 更新履歴
+
+- 2026-11-05: 調査ノートの初稿を追加。記載内容は随時検証・更新予定。

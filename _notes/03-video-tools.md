@@ -2,7 +2,9 @@
 title: "動画制作に使う道具と工程"
 description: "画面録画・編集・画像・音声・エンコードを用途ごとに整理する。"
 order: 3
-reviewed_at: "2026-11-05"
+category: "広告・動画"
+updated_at: "2026-11-05"
+status: "調査中"
 ---
 ## ツールを選ぶ前に決めること
 
@@ -51,3 +53,8 @@ reviewed_at: "2026-11-05"
 - [DaVinci Resolve](https://www.blackmagicdesign.com/products/davinciresolve)
 - [FFmpeg](https://ffmpeg.org/documentation.html)
 - [Google 広告ヘルプ](https://support.google.com/google-ads/)
+
+
+## 更新履歴
+
+- 2026-11-05: 調査ノートの初稿を追加。記載内容は随時検証・更新予定。

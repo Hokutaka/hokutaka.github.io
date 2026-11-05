@@ -2,7 +2,9 @@
 title: "広告を企画するときに考えること"
 description: "ターゲット、訴求、媒体、KPI、広告導線を考えるための基礎。"
 order: 2
-reviewed_at: "2026-11-05"
+category: "広告・動画"
+updated_at: "2026-11-05"
+status: "調査中"
 ---
 ## 広告は何を達成するものか
 
@@ -63,3 +65,8 @@ reviewed_at: "2026-11-05"
 - [Google Ads ヘルプ](https://support.google.com/google-ads/)
 - [Meta for Business](https://www.facebook.com/business/)
 - [消費者庁：景品表示法](https://www.caa.go.jp/policies/policy/representation/fair_labeling/)
+
+
+## 更新履歴
+
+- 2026-11-05: 調査ノートの初稿を追加。記載内容は随時検証・更新予定。

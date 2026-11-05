@@ -56,9 +56,9 @@ jobs:
         run: |
           test -s _site/index.html
           test -s _site/blog/index.html
-          test -s _site/ai-notes/index.html
-          test -s _site/ai-notes/01-overview/index.html
-          test -s _site/ai-notes/04-generative-video-ai/index.html
+          test -s _site/notes/index.html
+          test -s _site/notes/01-overview/index.html
+          test -s _site/notes/04-generative-video-ai/index.html
 
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'

@@ -1,0 +1,42 @@
+---
+layout: default
+title: Research Notes
+description: "広告、動画制作、生成AIなどを継続的に調べ、見直すための技術ノート。"
+permalink: /notes/
+---
+<section class="blog-index" aria-labelledby="notes-title">
+  <div class="blog-index__inner">
+    <header class="blog-index__header">
+      <p class="section-label">Research / Living notes</p>
+      <h1 class="blog-index__title" id="notes-title">Research Notes</h1>
+      <p class="blog-index__lead">
+        必要なときに調べ、試し、読み直して更新するためのノート。<br>
+        主に動画制作、生成AI、広告配信、効果測定などの知識を整理しています。
+      </p>
+      <p class="blog-index__lead">
+        記事は完成済みの解説ではなく、継続的に更新する作業メモです。
+        一部はAIによる下書き・整理を利用しています。未検証の内容があるため、
+        実務で使う際は各記事の更新日、確認状況、公式の一次資料を確認してください。
+      </p>
+    </header>
+
+    {% assign notes = site.notes | sort: 'order' %}
+    {% if notes.size > 0 %}
+    <ul class="blog-list">
+      {% for note in notes %}
+      <li class="blog-list__item">
+        <a href="{{ note.url | relative_url }}">
+          <span class="blog-list__date">
+            {{ note.updated_at | default: '更新日未設定' }}
+          </span>
+          <span class="blog-list__title">{{ note.title | escape }}</span>
+          <span class="blog-list__arrow" aria-hidden="true">↗</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="blog-list__empty">メモはまだありません。</p>
+    {% endif %}
+  </div>
+</section>

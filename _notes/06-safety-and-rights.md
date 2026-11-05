@@ -2,7 +2,9 @@
 title: "広告・AI素材を公開する前の確認事項"
 description: "商用利用、著作権、誇大表示、個人情報、広告審査のチェックリスト。"
 order: 6
-reviewed_at: "2026-11-05"
+category: "広告・動画"
+updated_at: "2026-11-05"
+status: "調査中"
 ---
 ## 「作れる」と「公開してよい」は違う
 
@@ -40,3 +42,8 @@ reviewed_at: "2026-11-05"
 - [個人情報保護委員会](https://www.ppc.go.jp/)
 - [Google 広告ポリシー](https://support.google.com/adspolicy/)
 - [Meta ビジネスヘルプ](https://www.facebook.com/business/help)
+
+
+## 更新履歴
+
+- 2026-11-05: 調査ノートの初稿を追加。記載内容は随時検証・更新予定。
