@@ -5,12 +5,22 @@ lang: ja
 
 permalink: /blog/:title/
 
+collections:
+  notes:
+    output: true
+    permalink: /notes/:name/
+
 defaults:
   - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
+  - scope:
+      path: ""
+      type: "ai_notes"
+    values:
+      layout: "note"
 
 exclude:
   - build.py

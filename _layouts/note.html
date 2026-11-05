@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<article class="post" aria-labelledby="note-title">
+  <div class="post__inner">
+    <header class="post__header">
+      <p class="section-label">Research Notes / {{ page.category | default: "Research" | escape }}</p>
+      <h1 class="post__title" id="note-title">{{ page.title | escape }}</h1>
+      <p class="post__meta">
+        最終更新：{{ page.updated_at | default: "未設定" }} ／ 状態：{{ page.status | default: "調査中" | escape }}
+      </p>
+    </header>
+
+    <div class="post__body">
+      <p>このページは随時追記・修正する調査ノートです。記載事項には未検証の内容が含まれます。</p>
+      {{ content }}
+      <hr>
+      <p>
+        <small>
+          一部の文章整理にAIを利用しています。
+          価格・機能・商用利用条件・法令等は最新の公式情報をご確認ください。
+        </small>
+      </p>
+    </div>
+
+    <p class="post__back">
+      <a href="/notes/">← Research Notes一覧へ</a>
+    </p>
+  </div>
+</article>
