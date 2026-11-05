@@ -3,6 +3,7 @@ title: "広告・AI素材を公開する前の確認事項"
 description: "商用利用、著作権、誇大表示、個人情報、広告審査のチェックリスト。"
 order: 6
 category: "広告・動画"
+tags: [video]
 updated_at: "2026-11-05"
 status: "調査中"
 ---

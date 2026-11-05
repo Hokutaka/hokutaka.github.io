@@ -4,11 +4,24 @@ layout: default
 <article class="post" aria-labelledby="note-title">
   <div class="post__inner">
     <header class="post__header">
-      <p class="section-label">Notes / {{ page.category | default: "Research" | escape }}</p>
+      <p class="section-label">Notes</p>
       <h1 class="post__title" id="note-title">{{ page.title | escape }}</h1>
       <p class="post__meta">
         最終更新：{{ page.updated_at | default: "未設定" }} ／ 状態：{{ page.status | default: "調査中" | escape }}
       </p>
+      {% if page.tags.size > 0 %}
+      <nav class="notes-article__tags" aria-label="この記事のタグ">
+        {% for tag in page.tags %}
+        <a class="notes-tag" href="/notes/#{{ tag | escape }}">
+          {% case tag %}
+            {% when 'video' %}動画
+            {% when 'program' %}プログラム
+            {% else %}{{ tag | escape }}
+          {% endcase %}
+        </a>
+        {% endfor %}
+      </nav>
+      {% endif %}
     </header>
 
     <div class="post__body">

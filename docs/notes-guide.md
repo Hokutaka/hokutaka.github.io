@@ -6,6 +6,7 @@
 - 記事：`_notes/*.md`（1テーマ = 1ファイル）
 - レイアウト：`_layouts/note.html`
 - ナビゲーション：`_includes/header.html`
+- タグ一覧・絞り込み：`notes/index.html` と `assets/js/notes-filter.js`
 
 ## いつもの更新方法
 
@@ -24,6 +25,7 @@
 title: "新しいテーマ"
 description: "短い説明。"
 order: 7
+tags: [video] # 動画。プログラムなら [program]、両方なら [video, program]
 category: "動画・広告"
 updated_at: "2026-11-05"
 status: "調査中"
@@ -31,6 +33,24 @@ status: "調査中"
 ```
 
 `order` は一覧の表示順、`updated_at` は最終修正日です。
+
+## タグの付け方
+
+各ノートのフロントマターに `tags` を設定します。最初のタグは **`video`（動画）** と **`program`（プログラム）** の2つです。
+
+```yaml
+tags: [video]
+# tags: [program]
+# tags: [video, program]  # 複数指定も可能
+```
+
+Notes一覧の「すべて・動画・プログラム」から絞り込めます。記事のタグからも該当する一覧へ移動できます。
+
+- 今ある広告・動画関連の6記事は `video` に分類します。
+- `program` の記事は追加するまで「このタグのノートはまだありません」と表示されます。
+- JavaScriptが無効な環境でも全記事は表示されます。
+- タグを新設する場合は、一覧のボタン・表示ラベル・`assets/js/notes-filter.js` の対応値をあわせて追加します。
+
 URLはファイル名から `/notes/07-new-topic/` になります。公開後にファイル名を変えるとURLも変わるので注意してください。
 
 ## 本文の編集ルール

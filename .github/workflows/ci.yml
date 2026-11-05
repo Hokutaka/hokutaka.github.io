@@ -61,6 +61,9 @@ jobs:
           test -s _site/notes/04-generative-video-ai/index.html
           grep -q "広告と動画制作を調べるための全体地図" _site/notes/01-overview/index.html
           grep -q "動画生成AIを無料・有料・商用利用で比較する" _site/notes/04-generative-video-ai/index.html
+          grep -q 'data-note-tags="video"' _site/notes/index.html
+          grep -q 'data-notes-filter="program"' _site/notes/index.html
+          test -s _site/assets/js/notes-filter.js
 
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'

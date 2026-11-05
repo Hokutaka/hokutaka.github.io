@@ -22,21 +22,39 @@ permalink: /notes/
 
     {% assign notes = site.notes | sort: 'order' %}
     {% if notes.size > 0 %}
-    <ul class="blog-list">
+    <div class="notes-filters" data-notes-filters role="group" aria-label="タグで絞り込み" hidden>
+      <button type="button" data-notes-filter="all" aria-pressed="true">すべて</button>
+      <button type="button" data-notes-filter="video" aria-pressed="false">動画</button>
+      <button type="button" data-notes-filter="program" aria-pressed="false">プログラム</button>
+    </div>
+    <ul class="blog-list" id="notes-list">
       {% for note in notes %}
-      <li class="blog-list__item">
+      <li class="blog-list__item" data-note-tags="{{ note.tags | join: ',' | escape }}">
         <a href="{{ note.url | relative_url }}">
-          <span class="blog-list__date">
-            {{ note.updated_at | default: '更新日未設定' }}
-          </span>
+          <span class="blog-list__date">{{ note.updated_at | default: '更新日未設定' }}</span>
           <span class="blog-list__title">{{ note.title | escape }}</span>
+          {% if note.tags.size > 0 %}
+          <span class="notes-list__tags">
+            {% for tag in note.tags %}
+            <span class="notes-tag">
+              {% case tag %}
+                {% when 'video' %}動画
+                {% when 'program' %}プログラム
+                {% else %}{{ tag | escape }}
+              {% endcase %}
+            </span>
+            {% endfor %}
+          </span>
+          {% endif %}
           <span class="blog-list__arrow" aria-hidden="true">↗</span>
         </a>
       </li>
       {% endfor %}
     </ul>
+    <p class="blog-list__empty notes-filter-empty" id="notes-filter-empty" role="status" hidden>このタグのノートはまだありません。</p>
     {% else %}
     <p class="blog-list__empty">メモはまだありません。</p>
     {% endif %}
   </div>
 </section>
+<script src="{{ '/assets/js/notes-filter.js' | relative_url }}" defer></script>
