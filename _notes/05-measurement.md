@@ -3,6 +3,7 @@ title: "広告配信と効果測定の基礎"
 description: "CPM・CTR・CVR・CPA、UTM、GA4、GTM、A/Bテストを整理する。"
 order: 5
 category: "広告・動画"
+tags: [video]
 updated_at: "2026-11-05"
 status: "調査中"
 ---

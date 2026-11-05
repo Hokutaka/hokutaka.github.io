@@ -3,6 +3,7 @@ title: "動画制作に使う道具と工程"
 description: "画面録画・編集・画像・音声・エンコードを用途ごとに整理する。"
 order: 3
 category: "広告・動画"
+tags: [video]
 updated_at: "2026-11-05"
 status: "調査中"
 ---

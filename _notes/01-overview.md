@@ -3,6 +3,7 @@ title: "広告と動画制作を調べるための全体地図"
 description: "目的・企画・制作・配信・計測・改善のつながりを整理する。"
 order: 1
 category: "広告・動画"
+tags: [video]
 updated_at: "2026-11-05"
 status: "調査中"
 ---

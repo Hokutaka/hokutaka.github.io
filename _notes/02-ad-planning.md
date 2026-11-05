@@ -3,6 +3,7 @@ title: "広告を企画するときに考えること"
 description: "ターゲット、訴求、媒体、KPI、広告導線を考えるための基礎。"
 order: 2
 category: "広告・動画"
+tags: [video]
 updated_at: "2026-11-05"
 status: "調査中"
 ---

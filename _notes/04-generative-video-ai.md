@@ -3,6 +3,7 @@ title: "動画生成AIを無料・有料・商用利用で比較する"
 description: "モデル・プラン・生成回数・素材の権利・採用素材1本あたりのコストを調べる。"
 order: 4
 category: "広告・動画"
+tags: [video]
 updated_at: "2026-11-05"
 status: "調査中"
 ---
