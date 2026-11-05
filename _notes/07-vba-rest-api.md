@@ -3,6 +3,7 @@ title: "VBAからREST APIを呼び出す共通関数"
 description: "baseUrlとendpointを分離し、HTTPメソッド・プロキシ・クエリパラメータを切り替えるVBA実装。"
 order: 7
 category: "プログラミング / VBA"
+tags: [program]
 updated_at: "2026-11-05"
 status: "実装例・動作未検証"
 ---
