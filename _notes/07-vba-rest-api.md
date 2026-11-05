@@ -190,9 +190,25 @@ Private Function Utf8Bytes(ByVal value As String) As Variant
     stream.Close
 End Function
 
-Public Sub ExampleGet()
+```
+
+## GET：クエリパラメータを指定して取得する
+
+APIの一覧取得を想定した例。認証が必要なAPIを想定して、アクセストークンを環境変数 `API_ACCESS_TOKEN` から取得する（認証不要のAPIなら、トークンのチェックと `authorization` 引数は省略できる）。
+
+```vb
+Public Sub ExampleGetBestPractice()
+    Const BASE_URL As String = "https://api.example.com/v1"
+    Dim token As String
     Dim params As Object
     Dim response As ApiResponse
+
+    ' 例：APIがBearer認証を必要とする場合
+    token = Environ$("API_ACCESS_TOKEN")
+    If Len(Trim$(token)) = 0 Then
+        Debug.Print "API_ACCESS_TOKEN が未設定です。"
+        Exit Sub
+    End If
 
     Set params = CreateObject("Scripting.Dictionary")
     params.Add "keyword", "日本語"
@@ -200,46 +216,108 @@ Public Sub ExampleGet()
 
     response = SendApiRequest( _
         method:="GET", _
-        baseUrl:="https://api.example.com/v1", _
+        baseUrl:=BASE_URL, _
         endpoint:="/items", _
-        queryParams:=params _
+        queryParams:=params, _
+        authorization:="Bearer " & token _
     )
 
-    Debug.Print response.StatusCode
-    Debug.Print response.Body
-    If Len(response.ErrorMessage) > 0 Then Debug.Print response.ErrorMessage
-End Sub
+    ' 接続失敗（タイムアウト、DNS、プロキシなど）
+    If Len(response.ErrorMessage) > 0 Then
+        Debug.Print "GETの通信エラー: " & response.ErrorMessage
+        Exit Sub
+    End If
 
-Public Sub ExamplePostWithProxy()
-    Dim response As ApiResponse
+    ' HTTP 4xx / 5xx は通信できても正常応答ではない
+    If Not response.Succeeded Then
+        Debug.Print "GETのHTTPエラー: " & response.StatusCode
+        Exit Sub
+    End If
 
-    response = SendApiRequest( _
-        method:="POST", _
-        baseUrl:="https://api.example.com/v1/", _
-        endpoint:="items", _
-        requestBody:="{""name"":""テスト""}", _
-        useProxy:=True, _
-        proxyAddress:="proxy.example.com:8080" _
-    )
-
-    Debug.Print response.StatusCode, response.Succeeded
-    Debug.Print response.Body, response.ErrorMessage
+    Debug.Print "GET成功: HTTP " & response.StatusCode
+    ' 必要に応じて response.Body をJSONとして解析して使う
+    ' 実運用でレスポンス本文（個人情報等）を丸ごとログに出さない
 End Sub
 ```
 
-## 呼び出し方
-
-`ExampleGet` は次のURLを組み立てる。
+この例のリクエストURLは次のようになる。`baseUrl` と `endpoint` は別の値として管理し、クエリの値は共通関数側でエンコードする。
 
 ```text
 https://api.example.com/v1/items?keyword=%E6%97%A5%E6%9C%AC%E8%AA%9E&page=1
 ```
 
-クエリパラメータが不要なら `queryParams` を省略して呼ぶ。
+**GETのポイント**：本文は送信せず、絞り込み条件などは `queryParams` で渡す。通信エラーとHTTPエラーを分けて扱い、成功時は `response.Body` をAPI仕様に従って解析する。個人情報や機密情報はクエリ文字列に載せない。
+
+## POST：JSONを送信して新規作成する
+
+新規データの作成を想定した例。`requestBody` にJSON文字列を渡すと、共通関数がUTF-8のバイト列で送信する。
+
+```vb
+Public Sub ExamplePostBestPractice()
+    Const BASE_URL As String = "https://api.example.com/v1"
+    Dim token As String
+    Dim jsonBody As String
+    Dim response As ApiResponse
+
+    token = Environ$("API_ACCESS_TOKEN")
+    If Len(Trim$(token)) = 0 Then
+        Debug.Print "API_ACCESS_TOKEN が未設定です。"
+        Exit Sub
+    End If
+
+    ' API仕様に合わせたJSONの固定例。
+    ' 可変の文字列を埋め込む場合はJSONライブラリでシリアライズする
+    jsonBody = "{""name"":""テスト"",""enabled"":true}"
+
+    response = SendApiRequest( _
+        method:="POST", _
+        baseUrl:=BASE_URL, _
+        endpoint:="/items", _
+        requestBody:=jsonBody, _
+        contentType:="application/json; charset=utf-8", _
+        authorization:="Bearer " & token _
+    )
+
+    If Len(response.ErrorMessage) > 0 Then
+        Debug.Print "POSTの通信エラー: " & response.ErrorMessage
+        Exit Sub
+    End If
+
+    If Not response.Succeeded Then
+        Debug.Print "POSTのHTTPエラー: " & response.StatusCode
+        Exit Sub
+    End If
+
+    ' APIによって201 Created、200 OK、204 No Contentなどがあり得る
+    Debug.Print "POST成功: HTTP " & response.StatusCode
+    ' 返却ID等は必要に応じて response.Body からJSON解析する
+End Sub
+```
+
+**POSTのポイント**：`Content-Type` と本文の形式を一致させる。例は固定JSONなのでそのまま書けるが、ユーザー入力などを埋め込む場合は、文字列連結ではなくJSONシリアライザーを使う。ステータスはAPIによって異なるため、`201` だけを成功条件にしない。また、タイムアウト時にはサーバーで処理済みの可能性があるので、**POSTを無条件に再試行しない**（必要ならAPIが提供する冪等キーなどの仕組みを確認する）。
+
+### プロキシを経由する場合
+
+GETとPOSTのどちらも、`SendApiRequest` 呼び出しに次の引数を追加する。環境変数 `API_PROXY` には、たとえば `proxy.example.com:8080` のような接続先を設定する。値が空の場合はプロキシ設定エラーになる。プロキシが不要な場合は両引数を省略し、明示的に直接接続する。
+
+```vb
+' 上記のSendApiRequest呼び出しに、必要なら追加する引数
+useProxy:=True, _
+proxyAddress:=Environ$("API_PROXY"), _
+```
+
+### PUT / DELETE の最小例
+
+同じ共通関数でHTTPメソッドを切り替えられる。以下は**プロシージャ内に記述する処理の抜粋**で、実運用ではGET・POSTの例と同様に戻り値を判定する。
 
 ```vb
 Dim response As ApiResponse
-response = SendApiRequest("DELETE", "https://api.example.com/v1", "/items/123")
+
+response = SendApiRequest( _
+    method:="DELETE", _
+    baseUrl:="https://api.example.com/v1", _
+    endpoint:="/items/123" _
+)
 
 response = SendApiRequest( _
     method:="PUT", _
@@ -249,7 +327,12 @@ response = SendApiRequest( _
 )
 ```
 
-`ExamplePostWithProxy` は指定したプロキシを経由する。`useProxy:=False`（省略時も同じ）ならプロキシを使わず直接接続する。実際のプロキシアドレスは環境に合わせて変更すること。
+### サンプルを使う前に
+
+- `api.example.com` は説明用のURLであり、実在するAPIのエンドポイントに置き換える。
+- `API_ACCESS_TOKEN` はExcelを起動する前に利用環境で設定する。APIキーをVBAコードやリポジトリに直接記載しない。
+- GETとPOSTの例は**前節の共通関数と同じ標準モジュールに追加**して利用する。認証方式・レスポンス形式・POST本文は接続先APIの仕様に従う。
+- ここでは `Debug.Print` でHTTPステータスのみ出力する。実運用では本文・トークン・個人情報を不用意にログへ出力しない。
 
 ## 実装の注意
 
@@ -266,3 +349,4 @@ response = SendApiRequest( _
 ## 更新履歴
 
 - 2026-11-05：設計メモを、baseUrlとendpointを分離した実コード・呼び出し例に更新。
+- 2026-11-05：GET・POSTのエラー判定、認証情報、JSON本文、プロキシ切り替えの例と注意点を追加。
