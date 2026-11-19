@@ -9,6 +9,9 @@ collections:
   notes:
     output: true
     permalink: /notes/:name/
+  books:
+    output: true
+    permalink: /books/:name/
 
 defaults:
   - scope:
@@ -21,6 +24,11 @@ defaults:
       type: "notes"
     values:
       layout: "note"
+  - scope:
+      path: ""
+      type: "books"
+    values:
+      layout: "book"
 
 exclude:
   - build.py

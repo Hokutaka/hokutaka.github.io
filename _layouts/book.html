@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<article class="post" aria-labelledby="book-title">
+  <div class="post__inner">
+    <header class="post__header">
+      <p class="section-label">Books</p>
+      <h1 class="post__title" id="book-title">{{ page.title | escape }}</h1>
+      <p class="post__meta">
+        {% if page.author %}{{ page.author | escape }}{% endif %}
+        {% if page.category %} ／ {{ page.category | escape }}{% endif %}
+        {% if page.owned == true %} ／ 所蔵{% endif %}
+        {% if page.status %} ／ {% case page.status %}{% when 'unread' %}積読{% when 'reading' %}読書中{% when 'read' %}読了{% when 'reread' %}再読したい{% else %}{{ page.status | escape }}{% endcase %}{% endif %}
+      </p>
+    </header>
+    {% assign book_body = content | strip %}
+    {% if book_body != '' %}
+    <div class="post__body">{{ content }}</div>
+    {% endif %}
+    <p class="post__back"><a href="{{ '/books/' | relative_url }}">← Books一覧へ</a></p>
+  </div>
+</article>

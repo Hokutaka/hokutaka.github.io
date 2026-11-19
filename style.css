@@ -684,46 +684,6 @@ h3,
 }
 
 
-
-.scroll-guide {
-  grid-column: 1 / -1;
-  justify-self: center;
-
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-
-  margin: 0;
-
-  color: var(--color-muted);
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-
-  writing-mode: vertical-rl;
-
-  animation: reveal-up 900ms 1.3s both;
-}
-
-.scroll-guide::after {
-  content: "";
-
-  width: 1px;
-  height: 3rem;
-
-  background:
-    linear-gradient(
-      var(--color-blue),
-      transparent
-    );
-
-  animation:
-    scroll-line
-    1.8s
-    ease-in-out
-    infinite;
-}
-
 /* ========================================
    About
 ======================================== */
@@ -2034,20 +1994,6 @@ h3,
   }
 }
 
-@keyframes scroll-line {
-  0%,
-  100% {
-    opacity: 0.3;
-    transform: scaleY(0.55);
-    transform-origin: top;
-  }
-
-  50% {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-}
-
 @keyframes character-enter {
   from {
     opacity: 0;
@@ -2282,9 +2228,6 @@ h3,
     margin-left: -1rem;
   }
 
-  .scroll-guide {
-    display: none;
-  }
 
   .about {
     min-height: auto;
