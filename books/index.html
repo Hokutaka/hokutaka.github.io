@@ -1,15 +1,13 @@
 ---
 layout: default
-title: Books
-description: "持っている本と、読んでいる本の記録。"
+title: Bookshelf
+description: "本棚。"
 permalink: /books/
 ---
 <section class="blog-index" aria-labelledby="books-title">
   <div class="blog-index__inner">
     <header class="blog-index__header">
-      <p class="section-label">Personal library</p>
-      <h1 class="blog-index__title" id="books-title">Books</h1>
-      <p class="blog-index__lead">本棚にある本と、読んでいる本。<br>技術書も、小説も、漫画も、画集も。</p>
+      <h1 class="blog-index__title" id="books-title">Bookshelf</h1>
     </header>
     {% assign books = site.books | sort: 'title' %}
     {% if books.size > 0 %}

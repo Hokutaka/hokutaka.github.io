@@ -1,4 +1,4 @@
-# Books
+# Bookshelf
 
 `_templates/book.md` を `_books/好きなファイル名.md` にコピーして編集すると、`/books/` に表示されます。技術書、小説、漫画、画集などジャンルは自由です。
 

@@ -4,7 +4,7 @@ layout: default
 <article class="post" aria-labelledby="book-title">
   <div class="post__inner">
     <header class="post__header">
-      <p class="section-label">Books</p>
+      <p class="section-label">Bookshelf</p>
       <h1 class="post__title" id="book-title">{{ page.title | escape }}</h1>
       <p class="post__meta">
         {% if page.author %}{{ page.author | escape }}{% endif %}
@@ -17,6 +17,6 @@ layout: default
     {% if book_body != '' %}
     <div class="post__body">{{ content }}</div>
     {% endif %}
-    <p class="post__back"><a href="{{ '/books/' | relative_url }}">← Books一覧へ</a></p>
+    <p class="post__back"><a href="{{ '/books/' | relative_url }}">← Bookshelfへ</a></p>
   </div>
 </article>

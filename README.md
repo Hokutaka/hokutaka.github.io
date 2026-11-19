@@ -9,7 +9,7 @@
 | Portfolio | [`/`](https://hokutaka.dev/) | 自己紹介、作品、連絡先 |
 | Blog | [`/blog/`](https://hokutaka.dev/blog/) | 制作記録や考えたことのメモ |
 | Notes | [`/notes/`](https://hokutaka.dev/notes/) | 動画、広告、生成AIなどの調査内容を継続更新する資料集 |
-| Books | [`/books/`](https://hokutaka.dev/books/) | 技術書・小説・漫画・画集などの本棚 |
+| Bookshelf | [`/books/`](https://hokutaka.dev/books/) | 本棚 |
 
 Notesは完成した解説記事ではなく、必要に応じて内容を検証・更新するためのノートです。調査や文章整理にAIを使う場合があります。
 
@@ -34,11 +34,11 @@ Notesは完成した解説記事ではなく、必要に応じて内容を検証
 ├── _layouts/                  # 共通、ブログ、調査ノートのレイアウト
 ├── _posts/                    # Blog記事
 ├── _notes/                    # Notes記事
-├── _books/                    # Books（一冊につきMarkdown一つ）
+├── _books/                    # Bookshelf（一冊につきMarkdown一つ）
 ├── _templates/book.md         # 書籍登録用ひな形
 ├── blog/index.html            # Blog一覧ページ
 ├── notes/index.html           # Notes一覧ページ
-├── books/index.html           # Books一覧ページ
+├── books/index.html           # Bookshelf一覧ページ
 ├── _config.yml                # Jekyll設定、URL、collection
 ├── build.py                   # トップページのみ単体HTML化
 ├── docs/notes-guide.md
@@ -80,9 +80,9 @@ python3 build.py
 
 詳細は [Notesの更新ガイド](docs/notes-guide.md) を参照してください。
 
-### Books
+### Bookshelf
 
-`_templates/book.md` を `_books/好きなファイル名.md` にコピーし、タイトル・著者などを編集するだけで追加できます。ジャンルは自由で、感想も任意です。詳しくは [Booksの登録方法](docs/books-guide.md) を参照してください。
+`_templates/book.md` を `_books/好きなファイル名.md` にコピーし、タイトル・著者などを編集するだけで追加できます。ジャンルは自由で、感想も任意です。詳しくは [Bookshelfの登録方法](docs/books-guide.md) を参照してください。
 
 ## CI/CD と公開
 
