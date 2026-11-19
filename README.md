@@ -2,6 +2,8 @@
 
 個人サイト [hokutaka.dev](https://hokutaka.dev/) のソースコードです。ポートフォリオ、個人ブログ、更新型の技術調査ノートを掲載しています。
 
+やりたい : イラストの管理もこのリポジトリでする。
+
 ## ページ構成
 
 | ページ | URL | 内容 |
@@ -86,7 +88,7 @@ python3 build.py
 
 ## CI/CD と公開
 
-`.github/workflows/ci.yml` で、PR・`main`へのpush時にPythonのトップページ生成とJekyllの全体ビルドを確認します。`main`へのpushでは、生成されたサイトをGitHub Pagesへデプロイします。
+`.github/workflows/ci.yml` で、PR・`main`へのpush時にPythonのトップページ生成とJekyllの全体ビルドを確認します。`main`へのpushでは、生成されたサイトをGitHub Pages / [https://hokutaka.dev](https://hokutaka.dev) へデプロイします。
 
 `_site/` や `dist/` は生成物としてGit管理から除外しています。
 
